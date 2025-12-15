@@ -1,6 +1,7 @@
 <?php
 error_reporting(E_ALL & ~E_DEPRECATED);
 require_once __DIR__ . '/../vendor/autoload.php';
+
 use App\FormFactory;
 
 $formConfig = require __DIR__ . '/../config/form.php';
@@ -47,6 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	<div class="container mt-5">
 		<h1>Input Test</h1>
 		<form action="" method="post">
+
+			<?php require __DIR__ . '/../templates/errors.php'; ?>
 			<?php foreach ($fields as $field): ?>
 				<div class="mb-3">
 					<?= $field->render(); ?>

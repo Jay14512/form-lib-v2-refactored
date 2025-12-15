@@ -52,7 +52,7 @@ return [
         'name' => 'privacy',
         'type' => 'checkbox',
         'id' => 'privacy',
-        'label' => 'I read and agree to the general terms and conditions.'
+        'label' => 'I agree to the general terms and conditions.'
     ],
     'submit' => [
         'name' => 'submit',

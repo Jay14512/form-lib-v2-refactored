@@ -11,21 +11,33 @@ class ComposerStaticInitfb249a97f2df953605b8dd711515c9d0
     );
 
     public static $prefixLengthsPsr4 = array (
-        'G' => 
+        'G' =>
         array (
             'GUMP\\' => 5,
+        ),
+        'F' =>
+        array (
+            'FormLib\\' => 8,
+        ),
+        'A' =>
+        array (
+            'App\\' => 4,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'GUMP\\' => 
+        'GUMP\\' =>
         array (
             0 => __DIR__ . '/..' . '/wixel/gump/src',
         ),
-    );
-
-    public static $fallbackDirsPsr4 = array (
-        0 => __DIR__ . '/../..' . '/app',
+        'FormLib\\' =>
+        array (
+            0 => __DIR__ . '/../..' . '/app/FormLib',
+        ),
+        'App\\' =>
+        array (
+            0 => __DIR__ . '/../..' . '/app',
+        ),
     );
 
     public static $classMap = array (
@@ -37,7 +49,6 @@ class ComposerStaticInitfb249a97f2df953605b8dd711515c9d0
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitfb249a97f2df953605b8dd711515c9d0::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitfb249a97f2df953605b8dd711515c9d0::$prefixDirsPsr4;
-            $loader->fallbackDirsPsr4 = ComposerStaticInitfb249a97f2df953605b8dd711515c9d0::$fallbackDirsPsr4;
             $loader->classMap = ComposerStaticInitfb249a97f2df953605b8dd711515c9d0::$classMap;
 
         }, null, ClassLoader::class);

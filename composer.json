@@ -4,7 +4,8 @@
     },
     "autoload": {
         "psr-4": {
-            "": "app/"
+            "App\\": "app/",
+            "FormLib\\": "app/FormLib/"
         }
     },
     "scripts": {

@@ -1,70 +1,61 @@
-# Form Library (PHP OOP Practice)
+# Form Library (v2 - Refactored)
 
-A small PHP-based project created to practice **object-oriented programming**, **dynamic form generation**, and **basic form validation**.
-
-Module: PHP  
-Goal: Understanding OOP, inheritance & form validation  
+A refactored version of the Form Library project with a stronger focus on **separation of concerns** and **clean architecture**.
+ 
+Goal: Improving structure & maintainability  
 Status: ✅ Completed  
-Version: 1.0  
+Version: 2.0  
 Tech: PHP 8+, Composer, Bootstrap 5  
 
 ---
 
-## 📌 Project Overview
+## 📌 Overview
 
-The goal of this project was to build a dynamic HTML form using **pure PHP**, without frameworks.
+This version builds on the original Form Library project and improves the overall structure by clearly separating:
 
-All form fields are defined in a configuration array and instantiated dynamically using object-oriented principles.  
-Each form element is responsible for rendering itself, while validation logic is handled separately.
+- configuration
+- form creation logic
+- validation logic
+- presentation (HTML output)
 
-The project focuses on clean structure, reusability, and separation of concerns.
-
----
-
-## ✨ Features
-
-- Dynamic form generation via configuration array
-- Object-oriented form elements
-- Individual render logic per input type
-- Separate validation logic
-- Clean and readable code structure
+The goal of this refactor was not to add new features, but to make the codebase **cleaner, more readable, and easier to maintain**.
 
 ---
 
-## 🧱 Implemented Form Elements
+## 🧱 Refactored Structure
 
-- Input (base class)
-- Textarea
-- Select
-- Checkbox
-- Radiobutton
-- Submit
+├─ config/
+│ └─ form.php → form configuration
 
-Each element extends a base input class and implements its own `render()` method.
+├─ app/
+│ ├─ FormFactory.php  → form creation logic
+│ └─ FormLib/  → form element classes & validation
+
+├─ templates/
+│ └─ errors.php → error output template
+
+├─ public/
+│ └─ index.php → application entry point
 
 ---
 
-## ✅ Validation
+## ✨ Key Improvements
 
-Validation is handled by a dedicated `Validation` class.
-
-Implemented checks:
-- Required fields
-- Email format validation
-- Required checkbox validation
-- Error collection in an array
-
-Validation logic is fully separated from rendering logic.
+- Form configuration moved to a dedicated config file
+- Switch / factory logic extracted into a `FormFactory` class
+- Error output separated into a template file
+- `index.php` reduced to orchestration only
+- Clear separation between logic and presentation
 
 ---
 
 ## 🧠 What I Learned
 
-- Applying OOP concepts in PHP
-- Working with inheritance and constructors
-- Building dynamic forms from configuration data
-- Separating logic, structure, and presentation
-- Implementing basic validation without frameworks
-- Writing cleaner and more maintainable PHP code
+- Applying separation of concerns in PHP
+- Refactoring existing code without changing functionality
+- Using factories to decouple object creation
+- Structuring small PHP projects in a more scalable way
+- Writing cleaner, more maintainable backend code
 
-This project helped me better understand how backend logic can be structured in a scalable and reusable way.
+This refactored version demonstrates how an existing solution can be improved through better structure and architectural decisions.
+

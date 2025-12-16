@@ -22,24 +22,35 @@ class Radiobutton extends Input
         $this->genders = $genders;
     }
 
-    public function render(): string
+    public function render(?string $error = null): string
     {
-        //1. Start: empty string 
-        $out = "";
 
-        //2. Add group label 
-        $out .= "<p class='form-label'>{$this->label}</p>";
+        // Add group label 
+        $out = "<p class='form-label'>{$this->label}</p>";
+
+
 
         //3. Start loop for radiobuttons 
         foreach ($this->genders as $gender) {
+            $class = 'form-check-input';
+            if ($error) {
+                $class .= ' is-invalid';
+            }
             $out .= "<div class='form-check'>
-            <input type='radio' name='{$this->name}' id='{$this->id}_{$gender}' value='{$gender}' class='form-check-input'> 
+            <input 
+            type='radio' 
+            name='{$this->name}' 
+            id='{$this->id}_{$gender}' 
+            value='{$gender}' 
+            class='{$class}'> 
             <label for='{$this->id}_{$gender}' class='form-check-label'>
             {$gender}
             </label>
             </div>";
         }
-
+        if ($error) {
+            $out .= "<div class='invalid-feedback d-block'>{$error}</div>";
+        }
 
         return $out;
     }

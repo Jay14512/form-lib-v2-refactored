@@ -24,26 +24,37 @@ class Select extends Input
         $this->options = $options;
     }
 
-    public function render(): string
+    public function render(?string $error = null): string
     {
-        //1. Start: empty String
-        $out = "";
 
-        //2. Add Label
-        $out .= "<label for='{$this->id}' class='form-label'>{$this->label}</label>";
+        $class = 'form-control';
+        if ($error) {
+            $class .= ' is-invalid';
+        }
 
-        //3. add opening select 
-        $out .= "<select name='{$this->name}' id='{$this->id}' class='form-control'>";
 
-        //4. render options 
+        // Label
+        $out = "<label for='{$this->id}' class='form-label'>{$this->label}</label>";
+
+        // add opening select 
+        $out .= "<select name='{$this->name}' id='{$this->id}' class='{$class}'>";
+
+        // empty default option
+        $out .= "<option value=''>Please select an option</option>";
+
+        // render options 
         foreach ($this->options as $option) {
             $out .= "<option value='{$option}'>{$option}</option>";
         }
 
-        //5. close select 
+        // close select 
         $out .= "</select>";
 
-        //6. return completed HTML String        
+        if ($error) {
+            $out .= "<div class='invalid-feedback'>{$error}</div>";
+        }
+
+        // return completed HTML String        
         return $out;
     }
 

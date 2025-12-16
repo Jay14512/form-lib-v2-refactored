@@ -25,12 +25,22 @@ class Textarea extends Input
 		$this->rows = $rows;
 	}
 
-	public function render(): string
+	public function render(?string $error = null): string
 	{
-		$out = <<<OUTPUT
+
+		$class = 'form-control';
+		if ($error) {
+			$class .= ' is-invalid';
+		}
+
+		$out = <<<HTML
 <label for="{$this->id}" class="form-label">{$this->label}</label>
-<textarea name="{$this->name}" id="{$this->id}" class="form-control" rows="$this->rows" cols="$this->cols"></textarea>
-OUTPUT;
+<textarea name="{$this->name}" id="{$this->id}" class="{$class}" rows="{$this->rows}" cols="{$this->cols}"></textarea>
+HTML;
+
+		if ($error) {
+			$out .= "<div class='invalid-feedback'>{$error}</div>";
+		}
 		return $out;
 	}
 }

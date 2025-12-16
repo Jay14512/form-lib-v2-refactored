@@ -48,11 +48,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	<div class="container mt-5">
 		<h1>Input Test</h1>
 		<form action="" method="post">
-
-			<?php require __DIR__ . '/../templates/errors.php'; ?>
-			<?php foreach ($fields as $field): ?>
+			<?php foreach ($fields as $name => $field): ?>
 				<div class="mb-3">
-					<?= $field->render(); ?>
+					<?= $field->render($errors[$name] ?? null); ?>
 				</div>
 			<?php endforeach; ?>
 

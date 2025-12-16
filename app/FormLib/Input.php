@@ -1,7 +1,8 @@
 <?php
 namespace FormLib;
 
-class Input {
+class Input
+{
 	protected $name;
 	protected $type;
 	protected $id;
@@ -15,7 +16,7 @@ class Input {
 	 * @param string $label
 	 * @param string $type
 	 */
-	public function __construct(string $name, string $id, string $label, string $type="text")
+	public function __construct(string $name, string $id, string $label, string $type = "text")
 	{
 		$this->name = $name;
 		$this->type = $type;
@@ -28,14 +29,27 @@ class Input {
 	 *
 	 * @return string
 	 */
-	public function render() : string
+	public function render(?string $error = null): string
 	{
 		$out = '';
 
-		$out .= <<<OUTPUT
+		//determine input class
+		$inputClass = 'form-control';
+		if ($error) {
+			$inputClass .= ' is-invalid';
+		}
+
+		//label + input
+
+		$out .= <<<HTML
 <label for="{$this->id}" class="form-label">{$this->label}</label>
-<input type="{$this->type}" name="{$this->name}" id="{$this->id}" class="form-control" value="">
-OUTPUT;
+<input type="{$this->type}" name="{$this->name}" id="{$this->id}" class="{$inputClass}" >
+HTML;
+
+		//error message 
+		if ($error) {
+			$out .= "<div class='invalid-feedback'>{$error}</div>";
+		}
 
 		return $out;
 	}

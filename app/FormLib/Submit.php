@@ -1,13 +1,13 @@
 <?php
 namespace FormLib;
 
-class Submit extends Input {
-	public function render() : string
+class Submit extends Input
+{
+	public function render(?string $error = null): string
 	{
-		$out = <<<OUTPUT
-<input type="{$this->type}" id="{$this->id}" class="btn btn-primary" value="{$this->label}">
-OUTPUT;
+		return <<<HTML
+<button type="submit" id="{$this->id}" class="btn btn-primary"> {$this->label}</button>
+HTML;
 
-		return $out;
 	}
 }

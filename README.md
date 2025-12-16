@@ -20,6 +20,9 @@ This version builds on the original Form Library project and improves the overal
 
 The goal of this refactor was not to add new features, but to make the codebase **cleaner, more readable, and easier to maintain**.
 
+For comparison, the original version (v1) uses a global error alert for form validation, while this refactored version improves UX by displaying validation errors directly at the corresponding form fields.
+
+
 ---
 
 ## 🧱 Refactored Structure
